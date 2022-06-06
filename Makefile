@@ -36,3 +36,24 @@ volume:
 
 authors-db:
 	docker compose -f $(FILE_NAME) exec postgres psql --username=$(USER) --dbname=$(DB_NAME)
+
+flake8:
+	docker compose -f $(FILE_NAME) exec api flake8 .
+
+black-check:
+	docker compose -f $(FILE_NAME) exec api black --check --exclude=migrations .
+
+black-diff:
+	docker compose -f $(FILE_NAME) exec api black --diff --exclude=migrations .
+
+black:
+	docker compose -f $(FILE_NAME) exec api black --exclude=migrations .
+
+isort-check:
+	docker compose -f $(FILE_NAME) exec api isort . --check-only --skip env --skip migrations
+
+isort-diff:
+		docker compose -f $(FILE_NAME) exec api isort . --diff--skip env --skip migrations
+
+isort:
+	docker compose -f $(FILE_NAME) exec api isort . --skip env --skip migrations
