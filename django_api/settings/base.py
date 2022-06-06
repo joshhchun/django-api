@@ -1,7 +1,3 @@
-"""
-Base settings file used in both development and production
-"""
-
 from pathlib import Path
 import environ
 
@@ -20,22 +16,22 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 # Application definition
 
 DJANGO_APPS = [
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    "django.contrib.sites",
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.admin',
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	"django.contrib.sites",
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
+	'django.contrib.admin',
 ]
 
 THIRD_PARTY_APPS = [
-    'rest_framework',
-    "django_filters",
-    "django_countries",
-    "phonenumber_field",
-    "drf_yasg",
-    "corsheaders",
+	'rest_framework',
+	"django_filters",
+	"django_countries",
+	"phonenumber_field",
+	"drf_yasg",
+	"corsheaders",
 ]
 
 LOCAL_APPS = ["core_apps.common", "core_apps.profiles", "core_apps.users"]
@@ -43,33 +39,33 @@ LOCAL_APPS = ["core_apps.common", "core_apps.profiles", "core_apps.users"]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.common.BrokenLinkEmailsMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'django.middleware.security.SecurityMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.middleware.common.CommonMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'django.contrib.messages.middleware.MessageMiddleware',
+	'django.middleware.common.BrokenLinkEmailsMiddleware',
+	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'django_api.urls'
 
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(APPS_DIR / "templates")],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.tz',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
+	{
+		'BACKEND': 'django.template.backends.django.DjangoTemplates',
+		'DIRS': [str(APPS_DIR / "templates")],
+		'APP_DIRS': True,
+		'OPTIONS': {
+			'context_processors': [
+				'django.template.context_processors.debug',
+				'django.template.context_processors.request',
+				'django.contrib.auth.context_processors.auth',
+				'django.template.context_processors.tz',
+				'django.contrib.messages.context_processors.messages',
+			],
+		},
+	},
 ]
 
 WSGI_APPLICATION = 'django_api.wsgi.application'
@@ -80,10 +76,10 @@ DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # For hashing passwords
 PASSWORD_HASHERS = [ 
-    'django.contrib.auth.hashers.Argon2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+	'django.contrib.auth.hashers.Argon2PasswordHasher',
+	'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+	'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+	'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
 
 
@@ -91,18 +87,18 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+	{
+		'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+	},
+	{
+		'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+	},
+	{
+		'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+	},
+	{
+		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+	},
 ]
 
 
@@ -134,8 +130,8 @@ STATIC_URL = '/staticfiles/'
 STATIC_ROOT = str(ROOT_DIR / 'staticfiles')
 STATICFILES_DIRS = []
 STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+	"django.contrib.staticfiles.finders.FileSystemFinder",
+	"django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
 MEDIA_URL = "/mediafiles/"
@@ -153,19 +149,19 @@ CORS_URLS_REGEX = r"^/api/.*$"
 # For logging
 
 LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "formatters": {
-        "verbose": {
-            "format": "%(levelname)s %(name)-12s %(asctime)s %(module)s" "%(process)d %(thread)d %(message)s"
-        }
-    },
-    "handlers": {
-        "console": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-            "formatter": "verbose"
-        }
-    },
-    "root": {"level": "INFO", "handlers": ["console"]},
+	"version": 1,
+	"disable_existing_loggers": False,
+	"formatters": {
+		"verbose": {
+			"format": "%(levelname)s %(name)-12s %(asctime)s %(module)s" "%(process)d %(thread)d %(message)s"
+		}
+	},
+	"handlers": {
+		"console": {
+			"level": "DEBUG",
+			"class": "logging.StreamHandler",
+			"formatter": "verbose"
+		}
+	},
+	"root": {"level": "INFO", "handlers": ["console"]},
 }
