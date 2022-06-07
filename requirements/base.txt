@@ -20,3 +20,8 @@ redis==4.1.0
 celery==5.2.3
 flower==1.0.0
 django-celery-email==3.0.0
+
+# Authentication
+djoser==2.1.0
+djangorestframework-simplejwt==4.8.0
+pyJWT==2.1.0
