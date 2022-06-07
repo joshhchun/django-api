@@ -2,3 +2,6 @@
 
 # PostgreSQL
 psycopg2==2.9.3
+argh==0.26.2
+pyYAML==6.0
+watchdog==2.1.6

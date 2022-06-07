@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -o errexit
+set -o nounset
+
+watchmedo auto-restart -d django_api/ -p '*.py' -- celery -A  django_api worker --loglevel=info

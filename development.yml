@@ -19,6 +19,7 @@ services:
     depends_on:
       - postgres
       - mailhog
+      - redis
     networks:
       - django-api-live
 
@@ -43,6 +44,50 @@ services:
       - "8025:8025"
     networks:
       - django-api-live
+
+  redis:
+    image: redis:6-alpine
+    container_name: redis
+    networks:
+      - django-api-live
+  
+  celery_worker:
+    build:
+      context: .
+      dockerfile: ./docker/development/django/Dockerfile
+    command: /start-celery-worker
+    container_name: celery_worker
+    volumes:
+      - .:/app
+    env_file:
+      - ./.envs/.development/.django
+      - ./.envs/.development/.postgres
+    depends_on:
+      - redis
+      - postgres
+      - mailhog
+    networks:
+      - django-api-live
+  
+  flower:
+    build:
+      context: .
+      dockerfile: ./docker/development/django/Dockerfile
+    command: /start-flower
+    container_name: flower
+    volumes:
+      - .:/app
+    env_file:
+      - ./.envs/.development/.django
+      - ./.envs/.development/.postgres
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - django-api-live
+
 
   nginx:
     restart: always

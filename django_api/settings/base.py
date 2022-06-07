@@ -32,6 +32,7 @@ THIRD_PARTY_APPS = [
 	"phonenumber_field",
 	"drf_yasg",
 	"corsheaders",
+ 	"djcelery_email",
 ]
 
 LOCAL_APPS = ["core_apps.common", "core_apps.profiles", "core_apps.users"]
@@ -148,6 +149,14 @@ CORS_URLS_REGEX = r"^/api/.*$"
 
 AUTH_USER_MODEL="users.User"
 
+
+# Celery
+CELERY_BROKER_URL = env("CELERY_BROKER")
+CELERY_RESULT_BROKEN=env("CELERY_BACKEND")
+CELERY_TIMEZONE = "UTC"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
 # For logging
 
 LOGGING = {
